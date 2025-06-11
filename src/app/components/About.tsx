@@ -2,34 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const socialLinks = [
-    {
-        text: "LinkedIn",
-        color: "text-gray-300",
-        link: "https://www.linkedin.com/in/nibodhdaware/",
-    },
-    {
-        text: "YouTube",
-        color: "text-red-500",
-        link: "https://www.youtube.com/@nibodhdaware",
-    },
-    {
-        text: "Blog",
-        color: "text-blue-400",
-        link: "https://nibodhdaware.hashnode.dev/",
-    },
-    {
-        text: "Upwork",
-        color: "text-green-500",
-        link: "https://upwork.com/freelancers/nibodhdaware",
-    },
-    {
-        text: "GitHub",
-        color: "text-yellow-400",
-        link: "https://github.com/nibodhdaware",
-    },
-];
-
 export default function About() {
     return (
         <motion.section
@@ -80,25 +52,6 @@ export default function About() {
                             experiences that can benefit the community.
                         </p>
                     </div>
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex flex-wrap gap-4 items-center justify-center mt-8 w-full"
-                >
-                    {socialLinks.map((link, index) => (
-                        <a
-                            key={index}
-                            href={link.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`text-lg font-medium hover:underline transition-all duration-300 ${link.color}`}
-                        >
-                            {link.text}
-                        </a>
-                    ))}
                 </motion.div>
             </div>
         </motion.section>
