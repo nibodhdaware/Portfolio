@@ -1,0 +1,106 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const socialLinks = [
+    {
+        text: "LinkedIn",
+        color: "text-gray-300",
+        link: "https://www.linkedin.com/in/nibodhdaware/",
+    },
+    {
+        text: "YouTube",
+        color: "text-red-500",
+        link: "https://www.youtube.com/@nibodhdaware",
+    },
+    {
+        text: "Blog",
+        color: "text-blue-400",
+        link: "https://nibodhdaware.hashnode.dev/",
+    },
+    {
+        text: "Upwork",
+        color: "text-green-500",
+        link: "https://upwork.com/freelancers/nibodhdaware",
+    },
+    {
+        text: "GitHub",
+        color: "text-yellow-400",
+        link: "https://github.com/nibodhdaware",
+    },
+];
+
+export default function About() {
+    return (
+        <motion.section
+            id="about"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center w-full min-h-screen py-20"
+        >
+            <div className="container mx-auto px-8 md:px-16 flex flex-col items-start justify-center h-full">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
+                >
+                    About Me
+                </motion.h2>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="max-w-4xl py-4"
+                >
+                    <div className="space-y-6 text-gray-300 py-4">
+                        <p className="text-lg leading-relaxed">
+                            I'm a passionate developer and content creator with
+                            a strong focus on building innovative solutions and
+                            sharing knowledge with the community. My journey in
+                            technology has been driven by curiosity and a desire
+                            to create meaningful impact.
+                        </p>
+                        <p className="text-lg leading-relaxed">
+                            As a student, I've balanced academic excellence with
+                            practical experience through freelancing and
+                            personal projects. I believe in continuous learning
+                            and pushing the boundaries of what's possible with
+                            technology.
+                        </p>
+                        <p className="text-lg leading-relaxed">
+                            Through my content creation, I aim to make
+                            technology more accessible and help others on their
+                            learning journey. Whether it's through code, videos,
+                            or articles, I'm committed to sharing knowledge and
+                            experiences that can benefit the community.
+                        </p>
+                    </div>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="flex flex-wrap gap-4 items-center justify-center mt-8 w-full"
+                >
+                    {socialLinks.map((link, index) => (
+                        <a
+                            key={index}
+                            href={link.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`text-lg font-medium hover:underline transition-all duration-300 ${link.color}`}
+                        >
+                            {link.text}
+                        </a>
+                    ))}
+                </motion.div>
+            </div>
+        </motion.section>
+    );
+}
