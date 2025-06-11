@@ -26,13 +26,14 @@ export default function Contact() {
                 throw new Error("EmailJS configuration is missing");
             }
 
+            const currentTime = new Date().toLocaleString();
+
             await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
                 {
-                    to_email: "nibodhdaware@gmail.com",
-                    from_name: formData.name,
-                    from_email: formData.email,
+                    name: formData.name,
+                    time: currentTime,
                     message: formData.message,
                 },
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
