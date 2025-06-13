@@ -73,11 +73,11 @@ export default function Home() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between">
-            <Hero />
-            <About />
-            <Experience />
-            <Projects />
-            <Contact />
+            <Hero id="home" />
+            <About id="about" />
+            <Experience id="experience" />
+            <Projects id="projects" />
+            <Contact id="contact" />
         </main>
     );
 }

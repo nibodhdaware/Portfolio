@@ -1,13 +1,12 @@
 "use client";
 
-import { FaLinkedin, FaYoutube, FaInstagram } from "react-icons/fa6";
 import {
-    FaSquareUpwork,
+    FaLinkedin,
+    FaYoutube,
+    FaInstagram,
     FaGithub,
-    FaHashnode,
     FaXTwitter,
 } from "react-icons/fa6";
-import { TbBrandFiverr } from "react-icons/tb";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -20,16 +19,6 @@ const socialLinks = [
         icon: FaYoutube,
         color: "text-red-500",
         link: "https://www.youtube.com/@nibodhdaware",
-    },
-    {
-        icon: FaHashnode,
-        color: "text-blue-400",
-        link: "https://nibodhdaware.hashnode.dev/",
-    },
-    {
-        icon: FaSquareUpwork,
-        color: "text-green-500",
-        link: "https://upwork.com/freelancers/nibodhdaware",
     },
     {
         icon: FaGithub,
@@ -45,11 +34,6 @@ const socialLinks = [
         icon: FaXTwitter,
         color: "text-blue-400",
         link: "https://x.com/nibodhdaware",
-    },
-    {
-        icon: TbBrandFiverr,
-        color: "text-green-500",
-        link: "https://www.fiverr.com/nibodhdaware",
     },
 ];
 

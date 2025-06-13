@@ -16,7 +16,10 @@ export default function Navbar() {
             <ul className="flex gap-8 text-lg font-medium">
                 {[
                     { name: "About", href: "#about" },
-                    { name: "Projects", href: "#projects" },
+                    {
+                        name: "Blog",
+                        href: "https://nibodhdaware.hashnode.dev/",
+                    },
                     { name: "Contact", href: "#contact" },
                 ].map((item) => (
                     <li key={item.name}>
@@ -24,7 +27,7 @@ export default function Navbar() {
                             onClick={() =>
                                 item.href.startsWith("#")
                                     ? scrollToSection(item.href.slice(1))
-                                    : (window.location.href = item.href)
+                                    : window.open(item.href, "_blank")
                             }
                             className="cursor-pointer transition-colors hover:underline hover:text-blue-400"
                         >

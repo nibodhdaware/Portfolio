@@ -2,10 +2,14 @@
 
 import { motion } from "framer-motion";
 
-export default function About() {
+interface AboutProps {
+    id?: string;
+}
+
+export default function About({ id }: AboutProps) {
     return (
         <motion.section
-            id="about"
+            id={id}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { GitHubRepo, getRepositories, formatDate } from "@/utils/github";
 
-export default function Projects() {
+interface ProjectsProps {
+    id?: string;
+}
+
+export default function Projects({ id }: ProjectsProps) {
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -28,7 +32,7 @@ export default function Projects() {
     if (loading) {
         return (
             <motion.section
-                id="projects"
+                id={id}
                 className="w-full min-h-screen bg-primary py-20"
             >
                 <div className="container mx-auto px-8 md:px-16">
@@ -39,7 +43,7 @@ export default function Projects() {
                         transition={{ duration: 0.5 }}
                         className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
                     >
-                        Featured Projects
+                        What I Worked On
                     </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                         {[1, 2, 3].map((i) => (
@@ -61,7 +65,7 @@ export default function Projects() {
     if (error) {
         return (
             <motion.section
-                id="projects"
+                id={id}
                 className="w-full min-h-screen bg-primary py-20"
             >
                 <div className="container mx-auto px-8 md:px-16">
@@ -72,7 +76,7 @@ export default function Projects() {
                         transition={{ duration: 0.5 }}
                         className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
                     >
-                        Featured Projects
+                        What I Worked On
                     </motion.h2>
                     <div className="text-center text-gray-400">{error}</div>
                 </div>
@@ -84,14 +88,14 @@ export default function Projects() {
 
     return (
         <motion.section
-            id="projects"
+            id={id}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full min-h-screen bg-primary py-20"
+            className="flex flex-col items-center justify-center w-full min-h-screen py-20"
         >
-            <div className="container mx-auto px-8 md:px-16">
+            <div className="container mx-auto px-8 md:px-16 flex flex-col items-start justify-center h-full">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -99,54 +103,75 @@ export default function Projects() {
                     transition={{ duration: 0.5 }}
                     className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
                 >
-                    Featured Projects
+                    What I Worked On
                 </motion.h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    {featuredRepos.map((repo) => (
-                        <motion.a
-                            key={repo.name}
-                            href={repo.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors duration-300"
-                        >
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-xl font-semibold text-white">
-                                    {repo.name}
-                                </h3>
-                            </div>
-                            <p className="text-gray-300 mb-4">
-                                {repo.description || "No description available"}
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                {repo.topics.slice(0, 3).map((topic) => (
-                                    <span
-                                        key={topic}
-                                        className="px-2 py-1 text-xs bg-accent3/20 text-accent3 rounded-full"
-                                    >
-                                        {topic}
-                                    </span>
-                                ))}
-                            </div>
-                            <span className="text-sm text-gray-400">
-                                Updated {formatDate(repo.updated_at)}
-                            </span>
-                        </motion.a>
-                    ))}
-                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="flex justify-center"
+                    className="max-w-6xl py-4"
                 >
-                    <a
+                    <div className="flex flex-col gap-y-12 text-gray-300 py-4">
+                        {featuredRepos.map((repo, index) => (
+                            <motion.div
+                                key={repo.name}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.2,
+                                }}
+                                className={`${
+                                    index < featuredRepos.length - 1
+                                        ? "mb-12"
+                                        : ""
+                                }`}
+                            >
+                                <a
+                                    href={repo.html_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-2xl font-bold text-white mb-2 inline-block transition-colors duration-300 hover:text-accent3"
+                                >
+                                    {repo.name}
+                                </a>
+                                <p className="text-xl text-gray-500 mb-4">
+                                    <span className="text-accent3">
+                                        Updated {formatDate(repo.updated_at)}
+                                    </span>
+                                </p>
+                                <p className="text-lg leading-relaxed text-gray-300">
+                                    {repo.description ||
+                                        "No description available"}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="flex justify-start w-full"
+                >
+                    <motion.a
                         href="/projects"
-                        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white transition-colors duration-300"
+                        className="inline-flex items-center px-6 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-accent3/10 transition-all duration-300"
+                        whileHover={{
+                            scale: 1.05,
+                            transition: {
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 10,
+                            },
+                        }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         Explore All Projects
-                    </a>
+                    </motion.a>
                 </motion.div>
             </div>
         </motion.section>

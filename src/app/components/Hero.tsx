@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+interface HeroProps {
+    id?: string;
+}
+
 const roles = [
     {
         text: "Full Stack Developer",
@@ -22,7 +26,7 @@ const roles = [
     },
 ];
 
-export default function Hero() {
+export default function Hero({ id }: HeroProps) {
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayed, setDisplayed] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
@@ -67,6 +71,7 @@ export default function Hero() {
 
     return (
         <motion.section
+            id={id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
