@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getProductsFromLinks } from "@/lib/amazon";
 
 interface Tool {
     name: string;
@@ -8,39 +10,49 @@ interface Tool {
     imageUrl: string;
     affiliateLink: string;
     category: string;
+    price?: string;
 }
 
-const tools: Tool[] = [
-    {
-        name: "MacBook Pro M2",
-        description:
-            "My primary development machine with incredible performance and battery life.",
-        imageUrl:
-            "https://m.media-amazon.com/images/I/61L5QgPvgqL._AC_SL1500_.jpg",
-        affiliateLink: "https://www.amazon.com/dp/B0CHWRXHNL?ref=myi_title_dp",
-        category: "Hardware",
-    },
-    {
-        name: "Logitech MX Master 3S",
-        description:
-            "Premium wireless mouse perfect for developers with customizable buttons.",
-        imageUrl:
-            "https://m.media-amazon.com/images/I/61UxfXTUyvL._AC_SL1500_.jpg",
-        affiliateLink: "https://www.amazon.com/dp/B09HM94VDS?ref=myi_title_dp",
-        category: "Peripherals",
-    },
-    {
-        name: "Keychron K2",
-        description:
-            "Mechanical keyboard with RGB backlight and wireless connectivity.",
-        imageUrl:
-            "https://m.media-amazon.com/images/I/61pBvlYVPxL._AC_SL1500_.jpg",
-        affiliateLink: "https://www.amazon.com/dp/B07WC5VN68?ref=myi_title_dp",
-        category: "Peripherals",
-    },
-];
+// Just add your Amazon product links here
+const amazonLinks = ["https://amzn.to/4l7fT4O"];
 
 export default function ToolsPage() {
+    const [tools, setTools] = useState<Tool[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchProducts() {
+            try {
+                const products = await getProductsFromLinks(amazonLinks);
+                setTools(products);
+            } catch (err) {
+                setError('Failed to fetch products. Please try again later.');
+                console.error('Error fetching products:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchProducts();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-primary text-white flex items-center justify-center">
+                <div className="text-2xl">Loading products...</div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-screen bg-primary text-white flex items-center justify-center">
+                <div className="text-2xl text-red-400">{error}</div>
+            </div>
+        );
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -84,9 +96,14 @@ export default function ToolsPage() {
                                 <h3 className="text-xl font-bold mb-2">
                                     {tool.name}
                                 </h3>
-                                <p className="text-gray-300">
+                                <p className="text-gray-300 mb-4">
                                     {tool.description}
                                 </p>
+                                {tool.price && (
+                                    <p className="text-lg font-semibold text-green-400">
+                                        {tool.price}
+                                    </p>
+                                )}
                             </div>
                         </motion.a>
                     ))}
