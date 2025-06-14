@@ -186,7 +186,7 @@ export default function Contact({ id }: ContactProps) {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.15 }}
                             className="space-y-8"
                         >
                             <div>

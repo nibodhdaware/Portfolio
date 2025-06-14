@@ -13,7 +13,7 @@ export default function About({ id }: AboutProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.15 }}
             className="flex flex-col items-center justify-center w-full min-h-screen py-20"
         >
             <div className="container mx-auto px-8 md:px-16 flex flex-col items-start justify-center h-full">
@@ -21,7 +21,7 @@ export default function About({ id }: AboutProps) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.15 }}
                     className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
                 >
                     About Me
@@ -30,7 +30,7 @@ export default function About({ id }: AboutProps) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.15, delay: 0.1 }}
                     className="max-w-4xl py-4"
                 >
                     <div className="space-y-6 text-gray-300 py-4">

@@ -16,6 +16,7 @@ export default function Navbar() {
             <ul className="flex gap-8 text-lg font-medium">
                 {[
                     { name: "About", href: "#about" },
+                    { name: "Tools", href: "/tools" },
                     {
                         name: "Blog",
                         href: "https://nibodhdaware.hashnode.dev/",

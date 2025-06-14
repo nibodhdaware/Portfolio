@@ -92,7 +92,7 @@ export default function Projects({ id }: ProjectsProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.15 }}
             className="flex flex-col items-center justify-center w-full min-h-screen py-20"
         >
             <div className="container mx-auto px-8 md:px-16 flex flex-col items-start justify-center h-full">
@@ -100,7 +100,7 @@ export default function Projects({ id }: ProjectsProps) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.15 }}
                     className="text-4xl md:text-5xl font-extrabold mb-12 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
                 >
                     What I Worked On
@@ -109,7 +109,7 @@ export default function Projects({ id }: ProjectsProps) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.15, delay: 0.1 }}
                     className="max-w-6xl py-4"
                 >
                     <div className="flex flex-col gap-y-12 text-gray-300 py-4">
@@ -120,8 +120,8 @@ export default function Projects({ id }: ProjectsProps) {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.2,
+                                    duration: 0.15,
+                                    delay: index * 0.1,
                                 }}
                                 className={`${
                                     index < featuredRepos.length - 1
@@ -154,7 +154,7 @@ export default function Projects({ id }: ProjectsProps) {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    transition={{ duration: 0.15, delay: 0.2 }}
                     className="flex justify-start w-full"
                 >
                     <motion.a
@@ -166,6 +166,7 @@ export default function Projects({ id }: ProjectsProps) {
                                 type: "spring",
                                 stiffness: 400,
                                 damping: 10,
+                                duration: 0.15,
                             },
                         }}
                         whileTap={{ scale: 0.95 }}

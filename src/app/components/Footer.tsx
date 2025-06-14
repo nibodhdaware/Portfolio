@@ -43,7 +43,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.15 }}
             className="w-full bg-primary py-0"
         >
             <div className="container mx-auto px-8 md:px-16 flex flex-col items-center justify-center">
@@ -51,7 +51,7 @@ export default function Footer() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    transition={{ duration: 0.15, delay: 0.1 }}
                     className="flex flex-wrap gap-2 items-center justify-center w-full flex-row py-4"
                 >
                     {socialLinks.map((link, index) => (

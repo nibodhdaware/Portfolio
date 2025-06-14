@@ -74,23 +74,25 @@ export default function Hero({ id }: HeroProps) {
             id={id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.15 }}
             className="flex flex-col md:flex-row w-full h-screen items-center"
         >
             {/* Left: Name and Subtitle */}
             <div className="flex-1 flex flex-col justify-center h-full w-full px-8 md:px-16">
-                <motion.h1
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
-                >
-                    Nibodh Daware
-                </motion.h1>
+                <div className="hidden md:block">
+                    <motion.h1
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.15, delay: 0.1 }}
+                        className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
+                    >
+                        Nibodh Daware
+                    </motion.h1>
+                </div>
                 <motion.p
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    transition={{ duration: 0.15, delay: 0.2 }}
                     className="text-2xl md:text-3xl text-gray-200 mb-8 font-light max-w-xl text-left h-12"
                 >
                     I am a{" "}
@@ -111,8 +113,8 @@ export default function Hero({ id }: HeroProps) {
             <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="flex-1 flex items-center justify-center bg-gray-900 h-full"
+                transition={{ duration: 0.15, delay: 0.3 }}
+                className="flex-1 flex items-center justify-center h-full"
             >
                 <div className="w-full h-full flex items-center justify-center">
                     <Image

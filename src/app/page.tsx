@@ -54,15 +54,15 @@ export default function Home() {
             if (displayed.length < currentRole.length) {
                 timeout = setTimeout(() => {
                     setDisplayed(currentRole.slice(0, displayed.length + 1));
-                }, 80);
+                }, 100);
             } else {
-                timeout = setTimeout(() => setTyping(false), 1200);
+                timeout = setTimeout(() => setTyping(false), 150);
             }
         } else {
             if (displayed.length > 0) {
                 timeout = setTimeout(() => {
                     setDisplayed(currentRole.slice(0, displayed.length - 1));
-                }, 40);
+                }, 50);
             } else {
                 setTyping(true);
                 setRoleIndex((prev) => (prev + 1) % roles.length);
