@@ -1,6 +1,3 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
-
 export interface AmazonProduct {
     name: string;
     description: string;
@@ -11,45 +8,24 @@ export interface AmazonProduct {
     rating?: string;
 }
 
+// Static data for tools
+const toolsData: AmazonProduct[] = [
+    {
+        name: "Portronics Hydra 10 Mechanical Wireless Gaming Keyboard",
+        description:
+            "A wireless gaming keyboard with a 10-key rollover, 16.8 million colors, and a type-c charging port. Perfect for gaming and productivity.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/611EaZOjMOL._SL1200_.jpg",
+        affiliateLink: "https://amzn.to/43Ymibp",
+        category: "Keyboard",
+        price: "₹2,599",
+        rating: "4.2/5 (850+ reviews)",
+    },
+];
+
 export async function getProductsFromLinks(
     links: string[],
 ): Promise<AmazonProduct[]> {
-    const products: AmazonProduct[] = [];
-
-    for (const link of links) {
-        try {
-            const response = await axios.get(link, {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                },
-            });
-
-            const $ = cheerio.load(response.data);
-
-            // Extract product information
-            const name = $("#productTitle").text().trim();
-            const description = $("#productDescription p")
-                .first()
-                .text()
-                .trim();
-            const imageUrl = $("#landingImage").attr("src") || "";
-            const price = $(".a-price .a-offscreen").first().text().trim();
-            const rating = $(".a-icon-star").first().text().trim();
-
-            products.push({
-                name,
-                description,
-                imageUrl,
-                affiliateLink: link,
-                category: "Development Tools",
-                price,
-                rating,
-            });
-        } catch (error) {
-            console.error(`Error scraping product from ${link}:`, error);
-        }
-    }
-
-    return products;
+    // Return the static data
+    return toolsData;
 }
