@@ -169,7 +169,7 @@ function ProjectsPage() {
                                             key={achievement}
                                             className="leading-relaxed"
                                         >
-                                            - {achievement}
+                                            {achievement}
                                         </li>
                                     ))}
                                 </ul>
