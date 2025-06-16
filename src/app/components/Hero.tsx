@@ -79,16 +79,14 @@ export default function Hero({ id }: HeroProps) {
         >
             {/* Left: Name and Subtitle */}
             <div className="flex-1 flex flex-col justify-center h-full w-full px-8 md:px-16">
-                <div className="hidden md:block">
-                    <motion.h1
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.15, delay: 0.1 }}
-                        className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
-                    >
-                        Nibodh Daware
-                    </motion.h1>
-                </div>
+                <motion.h1
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.15, delay: 0.1 }}
+                    className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-accent3 to-accent2 bg-clip-text text-transparent"
+                >
+                    Nibodh Daware
+                </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
