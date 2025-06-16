@@ -1,4 +1,4 @@
-export interface AmazonProduct {
+export interface AffiliateProduct {
     name: string;
     description: string;
     imageUrl: string;
@@ -8,8 +8,13 @@ export interface AmazonProduct {
     rating?: string;
 }
 
+export interface AffiliateBook extends AffiliateProduct {
+    author?: string;
+    review?: string;
+}
+
 // Static data for tools
-const toolsData: AmazonProduct[] = [
+const toolsData: AffiliateProduct[] = [
     {
         name: "Portronics Hydra 10 Mechanical Wireless Gaming Keyboard",
         description:
@@ -78,9 +83,91 @@ const toolsData: AmazonProduct[] = [
     },
 ];
 
+// Static data for books
+const booksData: AffiliateBook[] = [
+    {
+        name: "Elon Musk",
+        author: "Ashlee Vance",
+        review: "A fascinating look into the life of one of the most influential entrepreneurs of our time. This book provides incredible insights into Musk's vision and determination.",
+        description:
+            "The definitive biography of the most controversial and successful tech entrepreneur of our time. A revealing look at the man behind Tesla, SpaceX, and the quest for a fantastic future.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/81KAg5fnOhL._SL1500_.jpg",
+        affiliateLink: "https://amzn.to/3Zt7aBC",
+        category: "Biography",
+        price: "₹422 (Paperback)",
+        rating: "4.5/5 (13.2k+ reviews)",
+    },
+    {
+        name: "SUPERINTELLIGENCE: Paths, Dangers, Strategies",
+        author: "Nick Bostrom",
+        review: "A thought-provoking exploration of the future of artificial intelligence. Bostrom raises important questions about the potential risks and benefits of superintelligent AI.",
+        description:
+            "What happens when machines surpass humans in general intelligence? In this book, philosopher Nick Bostrom explores the future of artificial intelligence and its implications for humanity.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/71UvMcdcE9L._SL1159_.jpg",
+        affiliateLink: "https://amzn.to/44g7Ahc",
+        category: "Technology",
+        price: "₹467 (Paperback)",
+        rating: "4.4/5 (4.1k+ reviews)",
+    },
+    {
+        name: "Steve Jobs",
+        author: "Walter Isaacson",
+        review: "An in-depth biography of the visionary behind Apple. Isaacson's portrayal of Jobs is both inspiring and cautionary, offering lessons on innovation and leadership.",
+        description:
+            "Based on more than forty interviews with Steve Jobs conducted over two years, as well as interviews with more than a hundred family members, friends, adversaries, competitors, and colleagues, this is the exclusive biography of the Apple co-founder.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/71AIVdLiiAL._SL1500_.jpg",
+        affiliateLink: "https://amzn.to/403q95O",
+        category: "Biography",
+        price: "₹250.16 (Kindle Edition)",
+        rating: "4.7/5 (22.7k+ reviews)",
+    },
+    {
+        name: "Ratan Tata: A Complete Biography",
+        author: "A. K. Gandhi",
+        review: "An inspiring biography of one of India's most respected industrialists. Gandhi's account of Ratan Tata's life and achievements is both informative and motivational.",
+        description:
+            "This biography traces the life of Ratan Tata, from his early days to becoming one of the most respected industrialists in India. It highlights his contributions to the Tata Group and his philanthropic efforts.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/71Iz9TUbqfL._SL1500_.jpg",
+        affiliateLink: "https://amzn.to/4mU4erA",
+        category: "Biography",
+        price: "₹201.81 (Paperback)",
+        rating: "4.2/5 (600+ reviews)",
+    },
+    {
+        name: "Finish What You Start: The Art of Following Through, Taking Action, Executing, & Self-Discipline",
+        author: "Peter Hollins",
+        review: "A practical guide to achieving your goals and mastering self-discipline. Hollins provides actionable strategies to help you follow through on your commitments.",
+        description:
+            "Learn how to follow through on your goals and commitments with this practical guide. Hollins shares strategies for taking action, executing plans, and developing self-discipline.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/71m614-KA5L._SL1500_.jpg",
+        affiliateLink: "https://amzn.to/43WzVYB",
+        category: "Self-Help",
+        price: "₹289 (Paperback)",
+        rating: "4.4/5 (3k+ reviews)",
+    },
+    {
+        name: "Zero to One: Notes on Startups, or How to Build the Future",
+        author: "Peter Thiel",
+        review: "A groundbreaking book on startups and innovation. Thiel's insights on building a successful business from scratch are invaluable for entrepreneurs.",
+        description:
+            "In this book, Peter Thiel shares his philosophy on startups and innovation. He argues that the future of technology lies in creating new things rather than copying existing ones.",
+        imageUrl:
+            "https://m.media-amazon.com/images/I/61PDzIhVLnL._SL1100_.jpg",
+        affiliateLink: "https://amzn.to/4jTdt8G",
+        category: "Business",
+        price: "₹417 (Paperback)",
+        rating: "4.5/5 (32.4k+ reviews)",
+    },
+];
+
 export async function getProductsFromLinks(
-    links: string[],
-): Promise<AmazonProduct[]> {
-    // Return the static data
-    return toolsData;
+    type: "tools" | "books",
+): Promise<AffiliateProduct[] | AffiliateBook[]> {
+    // Return the appropriate static data based on type
+    return type === "tools" ? toolsData : booksData;
 }
